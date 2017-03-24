@@ -7,9 +7,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "native-base": "^2.0.13",
     "react": "15.4.2",
     "react-native": "0.41.2",
-    "react-native-vector-icons": "^4.0.0"
+    "react-native-navbar": "^1.6.3",
+    "react-native-vector-icons": "^4.0.0",
+    "superagent": "^3.5.2"
   },
   "devDependencies": {
     "babel-jest": "19.0.0",

@@ -18,6 +18,9 @@ export default class Navbar extends Component{
       <View>
        <Text style={styles.textNavbar}>{this.props.title}</Text>
       </View>
+      <TouchableHighlight onPress={this.props._onPressToggle}>
+       <Icon style={styles.menuIcon} name={this.props.iconname} size={15}/>
+      </TouchableHighlight>
     </View>
     )
   }
@@ -28,22 +31,18 @@ const styles = StyleSheet.create({
 containerMenu:{
   flexDirection: 'row',
   backgroundColor: '#504657',
-  height: 55
+  height: 55,
+  justifyContent: 'space-between'
 },
 menuIcon:{
-  marginTop:20,
+  marginTop:22,
   margin: 5,
   color: '#fff'
 },
 
-icons:{
-  marginRight:5,
-  color: '#fff'
-},
 textNavbar:{
   fontSize:20,
-  marginTop: 15,
-  marginLeft:20 ,
+  marginTop: 18,
   color: '#fff',
 },
 
