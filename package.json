@@ -11,6 +11,7 @@
     "react": "15.4.2",
     "react-native": "0.41.2",
     "react-native-navbar": "^1.6.3",
+    "react-native-side-menu": "^0.20.1",
     "react-native-vector-icons": "^4.0.0",
     "superagent": "^3.5.2"
   },

@@ -3,7 +3,7 @@ import{
   Text,
   View,
   StyleSheet,
-  TouchableHighlight
+  TouchableWithoutFeedback
 } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
@@ -12,15 +12,15 @@ export default class Navbar extends Component{
   render(){
     return(
     <View style={styles.containerMenu}>
-      <TouchableHighlight onPress={this.props._back}>
-       <Icon style={styles.menuIcon} name='arrow-left' size={15}/>
-      </TouchableHighlight>
+      <TouchableWithoutFeedback onPress={this.props._openMenu}>
+       <Icon style={styles.menuIcon} name='bars' size={18}/>
+      </TouchableWithoutFeedback>
       <View>
        <Text style={styles.textNavbar}>{this.props.title}</Text>
       </View>
-      <TouchableHighlight onPress={this.props._onPressToggle}>
-       <Icon style={styles.menuIcon} name={this.props.iconname} size={15}/>
-      </TouchableHighlight>
+      <TouchableWithoutFeedback onPress={this.props._onPressToggle}>
+       <Icon style={styles.menuIcon} name={this.props.iconname} size={18}/>
+      </TouchableWithoutFeedback>
     </View>
     )
   }
@@ -30,9 +30,10 @@ export default class Navbar extends Component{
 const styles = StyleSheet.create({
 containerMenu:{
   flexDirection: 'row',
-  backgroundColor: '#504657',
+  backgroundColor: 'black',
   height: 55,
-  justifyContent: 'space-between'
+  justifyContent: 'space-between',
+  paddingHorizontal: 10
 },
 menuIcon:{
   marginTop:22,

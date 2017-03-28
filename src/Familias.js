@@ -13,8 +13,10 @@ import{
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Request  from 'superagent'
 import Navbar from './Navbar'
+import SideMenu from 'react-native-side-menu'
+import Menu from './Menu'
 
-const URL = 'http://192.168.0.109:8000/api/especies'
+const URL = 'http://192.168.43.153:8000/api/especies'
 const {width,height} = Dimensions.get('window')
 
 export default class Familias extends Component{
@@ -28,6 +30,7 @@ constructor(props){
         dataSource: ds.cloneWithRows([]),
         dataSource2: ds2.cloneWithRows([]),
         toggled: false,
+        isOpen: false,
     }
 }
 
@@ -68,21 +71,28 @@ _showByName = (rowData) => {
     )
 }
 
-_back = () => {
-    this.props.navigator.pop({
-        name:'Home'
-    })
-}
 
 _onPressToggle = () => {
     this.setState({toggled: !this.state.toggled})
 }
 
+_openMenu = () => {
+   this.setState({isOpen: !this.state.isOpen})
+}
+
+_updateMenu = (isOpen) => {
+    this.setState({isOpen})
+}
 
     render(){
         return(
             <View container style={styles.container}>
-             {this.state.toggled ? <Navbar _onPressToggle={this._onPressToggle.bind(this)} _back={this._back.bind(this)} title='Familias' iconname='th'/> : <Navbar _onPressToggle={this._onPressToggle.bind(this)} _back={this._back.bind(this)} title='Familias' iconname='sort-alpha-asc'/>}
+            <SideMenu
+              menu={<Menu/>}
+              isOpen={this.state.isOpen}
+              onChange={(isOpen) => this._updateMenu(isOpen)}
+            >
+             {this.state.toggled ? <Navbar _onPressToggle={this._onPressToggle.bind(this)} _openMenu={this._openMenu.bind(this)} title='Familias' iconname='th'/> : <Navbar _onPressToggle={this._onPressToggle.bind(this)} _openMenu={this._openMenu.bind(this)} title='Familias' iconname='sort-alpha-asc'/>}
               {
                 this.state.toggled ?
                 <Text></Text>
@@ -111,7 +121,7 @@ _onPressToggle = () => {
                 pageSize={5}
                 />
               }
-              
+              </SideMenu>
             </View>
         )
     }
@@ -122,7 +132,7 @@ _onPressToggle = () => {
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    backgroundColor: 'gray'
+    backgroundColor: 'black'
   },
   contentbutton:{
     flex:1,
@@ -166,8 +176,9 @@ const styles = StyleSheet.create({
   namesView:{
    height: 45,
    backgroundColor: '#504657',
-   borderBottomWidth: 3,
-   borderColor: 'gray',
+   marginHorizontal: 2,
+   borderBottomWidth: 1,
+   borderColor: 'black',
    justifyContent: 'center'
   },
 })
