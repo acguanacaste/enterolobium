@@ -2,9 +2,6 @@ dependencies: \
   /Users/carloshernandez/Documents/enterolobium/node_modules/react-native/Libraries/Text/RCTShadowRawText.m \
   /Users/carloshernandez/Documents/enterolobium/node_modules/react-native/Libraries/Text/RCTShadowRawText.h \
   /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTShadowView.h \
-  /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
-  /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
-  /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
   /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTComponent.h \
   /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTRootView.h \
   /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
@@ -14,6 +11,9 @@ dependencies: \
   /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
   /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
   /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
   /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTUIManager.h \
   /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTViewManager.h \
   /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTConvert.h \

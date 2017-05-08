@@ -15,10 +15,11 @@ dependencies: \
   /Users/carloshernandez/Documents/enterolobium/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
   /Users/carloshernandez/Documents/enterolobium/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
   /Users/carloshernandez/Documents/enterolobium/node_modules/react-native/React/Base/RCTFrameUpdate.h \
-  /Users/carloshernandez/Documents/enterolobium/node_modules/react-native/React/Modules/RCTDevMenu.h \
+  /Users/carloshernandez/Documents/enterolobium/node_modules/react-native/React/Modules/RCTDevSettings.h \
   /Users/carloshernandez/Documents/enterolobium/node_modules/react-native/React/Executors/RCTJSCErrorHandling.h \
   /Users/carloshernandez/Documents/enterolobium/node_modules/react-native/React/Profiler/RCTJSCProfiler.h \
   /Users/carloshernandez/Documents/enterolobium/node_modules/react-native/React/Base/RCTLog.h \
   /Users/carloshernandez/Documents/enterolobium/node_modules/react-native/React/Base/RCTPerformanceLogger.h \
   /Users/carloshernandez/Documents/enterolobium/node_modules/react-native/React/Profiler/RCTProfile.h \
-  /Users/carloshernandez/Documents/enterolobium/node_modules/react-native/React/Base/RCTUtils.h
+  /Users/carloshernandez/Documents/enterolobium/node_modules/react-native/React/Base/RCTUtils.h \
+  /Users/carloshernandez/Documents/enterolobium/node_modules/react-native/React/Modules/RCTDevMenu.h

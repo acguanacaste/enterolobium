@@ -8,6 +8,7 @@ import{
     Dimensions,
     Image,
     TouchableHighlight,
+    Share,
     StyleSheet
 } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
@@ -16,7 +17,8 @@ import Navbar from './Navbar'
 import SideMenu from 'react-native-side-menu'
 import Menu from './Menu'
 
-const URL = 'http://192.168.43.153:8000/api/especies'
+const URL = 'http://192.168.230.128:8000/api/taxonomias/tipoTaxonomia/family'
+//http://192.168.230.128:8000/api/taxonomias/tipoTaxonomia/genus
 const {width,height} = Dimensions.get('window')
 
 export default class Familias extends Component{
@@ -56,7 +58,7 @@ _showByThumbnail = (rowData) => {
     return(
         <View>
          <TouchableHighlight>
-          <Image style={{width:120,height:120,margin:0.5}} source={{uri:rowData.urlPhoto}}/>
+          <Image style={{width:120,height:120,margin:0.5}} source={{uri:rowData.urlPhoto,cache:'force-cache'}}/>
          </TouchableHighlight>
         </View>
     )
@@ -66,11 +68,10 @@ _showByName = (rowData) => {
     console.log(rowData.scientificName)
     return(
         <View style={styles.namesView}>
-          <Text style={styles.textList}>{rowData.scientificName}</Text>
+          <Text style={styles.textList}>{rowData.taxonomyName}</Text>
         </View>
     )
 }
-
 
 _onPressToggle = () => {
     this.setState({toggled: !this.state.toggled})
@@ -84,26 +85,28 @@ _updateMenu = (isOpen) => {
     this.setState({isOpen})
 }
 
+_openSearch = () => {
+  this.props.navigator.push({
+  name: 'Search',
+})
+}
+
+static navigationOptions = {
+        header: null
+ }
+
+
     render(){
+        const menu = <Menu navigation={this.props.navigation}/>
         return(
-            <View container style={styles.container}>
             <SideMenu
-              menu={<Menu/>}
+              menu={menu}
               isOpen={this.state.isOpen}
               onChange={(isOpen) => this._updateMenu(isOpen)}
             >
-             {this.state.toggled ? <Navbar _onPressToggle={this._onPressToggle.bind(this)} _openMenu={this._openMenu.bind(this)} title='Familias' iconname='th'/> : <Navbar _onPressToggle={this._onPressToggle.bind(this)} _openMenu={this._openMenu.bind(this)} title='Familias' iconname='sort-alpha-asc'/>}
-              {
-                this.state.toggled ?
-                <Text></Text>
-                :
-              <TextInput
-                style = {styles.searchText}
-                placeholder = "  Search..."
-                onChangeText = {(text) => this._filterSearch(text)}
-                value = {this.state.text}
-              />
-              }
+             <View container style={styles.container}>
+             {this.state.toggled ? <Navbar _onPressToggle={this._onPressToggle.bind(this)} _openMenu={this._openMenu.bind(this)} _openSearch={this._openSearch.bind(this)} iconprincipal='bars' title='Familias' iconcenter='search' iconname='th'/> : <Navbar _onPressToggle={this._onPressToggle.bind(this)} _openMenu={this._openMenu.bind(this)} _openSearch={this._openSearch.bind(this)} iconprincipal='bars' title='Familias' iconcenter='search' iconname='sort-alpha-asc'/>}
+              
               {
                 this.state.toggled ?
                <ListView
@@ -118,21 +121,21 @@ _updateMenu = (isOpen) => {
                 contentContainerStyle={styles.list}
                 renderRow ={ this._showByThumbnail.bind(this)}
                 dataSource = {this.state.dataSource}
-                pageSize={5}
+                initialListSize={15}
+                pageSize={30}
                 />
               }
+              </View>
               </SideMenu>
-            </View>
         )
     }
 }
 
 
-
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    backgroundColor: 'black'
+    backgroundColor: '#898653'
   },
   contentbutton:{
     flex:1,
@@ -148,12 +151,12 @@ const styles = StyleSheet.create({
     borderColor: 'gray'
   },
   textbutton:{
-    color: '#fff',
+    color: '#b3b3b3',
     fontSize: 20,
     marginLeft: 10
   },
   iconbutton:{
-    color: '#fff',
+    color: '#b3b3b3',
     marginRight: 15
   },
    list:{
@@ -170,15 +173,15 @@ const styles = StyleSheet.create({
   },
   textList:{
    fontSize: 20,
-   color: '#fff',
+   fontWeight: 'bold',
+   color: '#181818',
    textAlign: 'center'
   },
   namesView:{
    height: 45,
-   backgroundColor: '#504657',
-   marginHorizontal: 2,
+   backgroundColor: '#898653',
    borderBottomWidth: 1,
-   borderColor: 'black',
+   borderColor: '#181818',
    justifyContent: 'center'
   },
 })

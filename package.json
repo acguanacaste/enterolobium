@@ -8,19 +8,26 @@
   },
   "dependencies": {
     "native-base": "^2.0.13",
-    "react": "15.4.2",
-    "react-native": "0.41.2",
+    "react": "16.0.0-alpha.6",
+    "react-native": "0.43.0",
+    "react-native-image-slider": "^1.1.5",
+    "react-native-maps": "^0.13.1",
     "react-native-navbar": "^1.6.3",
     "react-native-side-menu": "^0.20.1",
-    "react-native-vector-icons": "^4.0.0",
+    "react-native-swiper": "^1.5.4",
+    "react-native-vector-icons": "^4.1.0",
+    "react-navigation": "^1.0.0-beta.9",
+    "react-redux": "^5.0.4",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
     "superagent": "^3.5.2"
   },
   "devDependencies": {
     "babel-jest": "19.0.0",
     "babel-preset-react-native": "1.9.1",
-    "jest": "19.0.0",
+    "jest": "19.0.2",
     "react-native-section-menu": "^0.1.0",
-    "react-test-renderer": "15.4.2"
+    "react-test-renderer": "16.0.0-alpha.6"
   },
   "jest": {
     "preset": "react-native"

@@ -1,3 +1,4 @@
+/Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTRootContentView.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTConvert+MapKit.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTStatusBarManager.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTSourceCode.o
@@ -13,10 +14,11 @@
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTRootView.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTExceptionsManager.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTMapAnnotation.o
-/Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTDevMenu.o
+/Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTSamplingProfilerPackagerMethod.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTRootShadowView.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTModuleMethod.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTMultipartDataTask.o
+/Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTPackagerClient.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTBorderDrawing.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTAssert.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTSlider.o
@@ -31,6 +33,7 @@
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTImageSource.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTDatePickerManager.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTProfileTrampoline-x86_64.o
+/Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTScrollContentViewManager.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTEventEmitter.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTJavaScriptLoader.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTPerfMonitor.o
@@ -38,6 +41,7 @@
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTProfileTrampoline-i386.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTFont.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTScrollViewManager.o
+/Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTScrollContentShadowView.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTTabBarManager.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/JSCSamplingProfiler.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTWrapperViewController.o
@@ -50,7 +54,9 @@
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTAppState.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTJSCExecutor.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTBatchedBridge.o
+/Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTDevSettings.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/UIView+React.o
+/Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTDevMenu.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTSliderManager.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTClipboard.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTModuleData.o
@@ -62,6 +68,7 @@
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTParserUtils.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTView.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTPlatform.o
+/Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTPackagerClientResponder.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTMapOverlay.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTKeyboardObserver.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTI18nManager.o
@@ -91,9 +98,11 @@
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTMap.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTNavItem.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTEventDispatcher.o
+/Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTReloadPackagerMethod.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTModalHostViewManager.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTUIManager.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTTouchEvent.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTProfile.o
+/Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTConvert+Transform.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTComponentData.o
 /Users/carloshernandez/Documents/enterolobium/ios/build/Build/Intermediates/React.build/Debug-iphonesimulator/React.build/Objects-normal/x86_64/RCTNavigatorManager.o
