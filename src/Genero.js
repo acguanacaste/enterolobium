@@ -4,71 +4,55 @@ import{
     View,
     Text,
     TextInput,
-    ListView,
+    FlatList,
     Dimensions,
     Image,
-    TouchableHighlight,
+    TouchableWithoutFeedback,
     Share,
     StyleSheet
 } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import Request  from 'superagent'
 import Navbar from './Navbar'
 import SideMenu from 'react-native-side-menu'
 import Menu from './Menu'
+import Search from './Search'
+import {connect} from 'react-redux'
+import {fetchData2} from './actions'
 
-const URL = 'http://192.168.230.128:8000/api/taxonomias/tipoTaxonomia/genus'
 const {width,height} = Dimensions.get('window')
 
-export default class Genero extends Component{
+class Genero extends Component{
 constructor(props){
     super(props)
     
-    this.requestSuperAgent = this.requestSuperAgent.bind(this)
-    const ds = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2})
-    const ds2 = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2})
     this.state = {
-        dataSource: ds.cloneWithRows([]),
-        dataSource2: ds2.cloneWithRows([]),
         toggled: false,
         isOpen: false,
+        openSearch: false
     }
 }
 
-componentDidMount() {
-  this.requestSuperAgent()
-}
-
-requestSuperAgent() {
-    Request
-    .get(URL)
-    .then(res => {
-       this.setState({
-           dataSource: this.state.dataSource.cloneWithRows(JSON.parse(res.text).responseResult),
-           dataSource2: this.state.dataSource2.cloneWithRows(JSON.parse(res.text).responseResult)
-    }) 
-    })
-    .catch(err => {
-        console.log(err)
-    })
+componentWillMount(){
+    this.props.fetchData2()
 }
 
 _showByThumbnail = (rowData) => {
+     const{navigate} = this.props.navigation
     return(
-        <View>
-         <TouchableHighlight>
+         <TouchableWithoutFeedback onPress={() =>  navigate('Details',{item:rowData})}>
           <Image style={{width:120,height:120,margin:0.5}} source={{uri:rowData.urlPhoto,cache:'force-cache'}}/>
-         </TouchableHighlight>
-        </View>
+         </TouchableWithoutFeedback>
     )
 }
 
 _showByName = (rowData) => {
-    console.log(rowData.scientificName)
+     const{navigate} = this.props.navigation
     return(
-        <View style={styles.namesView}>
-          <Text style={styles.textList}>{rowData.taxonomyName}</Text>
-        </View>
+        <TouchableWithoutFeedback onPress={() =>  navigate('Details',{item:rowData})}>
+            <View style={styles.namesView}>
+              <Text style={styles.textList}>{rowData.taxonomyName}</Text>
+            </View>
+         </TouchableWithoutFeedback>
     )
 }
 
@@ -84,10 +68,8 @@ _updateMenu = (isOpen) => {
     this.setState({isOpen})
 }
 
-_openSearch = () => {
-  this.props.navigator.push({
-  name: 'Search',
-})
+_onPressSearch = () => {
+  this.setState({openSearch: !this.state.openSearch})
 }
 
 static navigationOptions = {
@@ -96,6 +78,7 @@ static navigationOptions = {
 
     render(){
         const menu = <Menu navigation={this.props.navigation}/>
+        console.log(this.props.data.data)
         return(
             <SideMenu
               menu={menu}
@@ -103,29 +86,39 @@ static navigationOptions = {
               onChange={(isOpen) => this._updateMenu(isOpen)}
             >
              <View container style={styles.container}>
-             {this.state.toggled ? <Navbar _onPressToggle={this._onPressToggle.bind(this)} _openMenu={this._openMenu.bind(this)} _openSearch={this._openSearch.bind(this)} iconprincipal='bars' title='Genero' iconcenter='search' iconname='th'/> : <Navbar _onPressToggle={this._onPressToggle.bind(this)} _openMenu={this._openMenu.bind(this)} _openSearch={this._openSearch.bind(this)} iconprincipal='bars' title='Genero' iconcenter='search' iconname='sort-alpha-asc'/>}
-              
+             {this.state.toggled ? <Navbar _onPressToggle={this._onPressToggle.bind(this)} _openMenu={this._openMenu.bind(this)} _openSearch={this._onPressSearch.bind(this)} iconprincipal='bars' title='Genero' iconcenter='search' iconname='th'/> : <Navbar _onPressToggle={this._onPressToggle.bind(this)} _openMenu={this._openMenu.bind(this)} _openSearch={this._onPressSearch.bind(this)} iconprincipal='bars' title='Genero' iconcenter='search' iconname='sort-alpha-asc'/>}
+            {this.state.openSearch ? <Search/> :  null}
+
               {
                 this.state.toggled ?
-               <ListView
-               enableEmptySections={true}
-               renderRow = {this._showByName.bind(this)}
-               dataSource = {this.state.dataSource2}
+               <FlatList
+               data={this.props.data.data.responseResult}
+               renderItem={({item}) => this._showByName(item)}
                />
     
               :
-              <ListView
-                enableEmptySections={true}
-                contentContainerStyle={styles.list}
-                renderRow ={ this._showByThumbnail.bind(this)}
-                dataSource = {this.state.dataSource}
-                initialListSize={15}
-                pageSize={30}
+              <FlatList
+               contentContainerStyle={styles.list}
+               data={this.props.data.data.responseResult}
+               renderItem={({item}) => this._showByThumbnail(item)}
+               initialNumToRender = {24}
                 />
               }
               </View>
               </SideMenu>
         )
+    }
+}
+
+//mapStateToProps
+const mapStateToProps = state => {
+    return { data: state.data}
+}
+
+//mapDispatchToProps
+const mapDispatchToProps = dispatch => {
+    return{
+        fetchData2: () => dispatch(fetchData2())
     }
 }
 
@@ -183,3 +176,5 @@ const styles = StyleSheet.create({
    justifyContent: 'center'
   },
 })
+
+export default connect(mapStateToProps,mapDispatchToProps)(Genero)
