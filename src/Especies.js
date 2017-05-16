@@ -39,7 +39,7 @@ componentWillMount(){
 }
 
 
-_showByThumbnail = (rowData) => {
+_showByThumbnail = rowData => {
     const{navigate} = this.props.navigation
     return(
          <TouchableWithoutFeedback onPress={() => navigate('Details',{item:rowData})}>
@@ -48,7 +48,7 @@ _showByThumbnail = (rowData) => {
     )
 }
 
-_showByName = (rowData) => {
+_showByName = rowData => {
     const{navigate} = this.props.navigation
     return(
         <TouchableWithoutFeedback onPress={() =>  navigate('Details',{item:rowData})}>
@@ -67,7 +67,7 @@ _openMenu = () => {
    this.setState({isOpen: !this.state.isOpen})
 }
 
-_updateMenu = (isOpen) => {
+_updateMenu = isOpen => {
     this.setState({isOpen})
 }
 
@@ -83,7 +83,6 @@ static navigationOptions = {
 
     render(){
         const menu = <Menu navigation={this.props.navigation}/>
-        console.log(this.props.data.data.responseResult)
         return(
             <SideMenu
               menu={menu}

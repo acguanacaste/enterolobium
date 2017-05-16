@@ -1,5 +1,7 @@
 import {FETCHING_DATA,FETCHING_DATA_SUCCESS,FETCHING_DATA_ERROR} from '../constants'
 import getDataApi from '../api/api'
+import {getDataApi2} from '../api/api'
+
 
 export const getData = () => {
     return{
@@ -14,13 +16,14 @@ export const getDataSuccess = data => {
     }
 }
 
+
 export const getDataFailure = () => {
     return{
         type: FETCHING_DATA_ERROR
     }
 }
 
-//async trunk fetchData
+//async thunk fetchData
 
 export const fetchData = () => {
     return(dispatch) =>{
@@ -33,3 +36,13 @@ export const fetchData = () => {
     }
 }
 
+export const fetchData2 = () => {
+    return(dispatch) =>{
+        dispatch(getData())
+        getDataApi2()
+            .then(([response,json])=>{
+                dispatch(getDataSuccess(json))
+            })
+            .catch((err) => dispatch(getDataFailure(err)))
+    }
+}

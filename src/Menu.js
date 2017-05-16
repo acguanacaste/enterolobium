@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import{View,Text,ScrollView,Image,StyleSheet,Dimensions,TouchableHighlight} from 'react-native'
+import{View,Text,ScrollView,Image,StyleSheet,Dimensions,TouchableWithoutFeedback} from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Especies from './Especies'
 import Familias from './Familias'
@@ -16,30 +16,30 @@ export default class Menu extends Component{
                     <View sytle={styles.imageProfile}>
                         <Image style={styles.image}source={require('./img/logo-area-conservacion-guana.png')}/>
                     </View>
-                    <TouchableHighlight onPress={() => navigate('Especies')}>
+                    <TouchableWithoutFeedback onPress={() => navigate('Especies')}>
                         <View style={styles.items}>  
                             <Icon name='database' size={15} style={styles.iconbutton}/>                  
                             <Text style={styles.text} >Especies</Text>
                         </View>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => navigate('Familias')}>
+                    </TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback onPress={() => navigate('Familias')}>
                         <View style={styles.items}>                    
                             <Icon name='database' size={15} style={styles.iconbutton}/>                  
                             <Text style={styles.text} >Familias</Text>
                         </View>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={() => navigate('Genero')}>
+                    </TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback onPress={() => navigate('Genero')}>
                         <View style={styles.items}>                    
                            <Icon name='database' size={15} style={styles.iconbutton}/>                  
                             <Text style={styles.text} >Genero</Text>
                         </View>
-                    </TouchableHighlight>
-                    <TouchableHighlight onPress={null}>
+                    </TouchableWithoutFeedback>
+                    <TouchableWithoutFeedback onPress={null}>
                         <View style={ styles.items}>                    
                            <Icon name='info' size={15} style={styles.iconbutton}/>                  
                             <Text style={styles.text} > Información</Text>
                         </View>
-                    </TouchableHighlight>
+                    </TouchableWithoutFeedback>
                 </ScrollView>
             </View>
         )
