@@ -1,5 +1,5 @@
 import {FETCHING_DATA,FETCHING_DATA_SUCCESS,FETCHING_DATA_ERROR} from '../constants'
-
+import {REHYDRATE} from  'redux-persist/constants'
 const initialState = {
     data: [],
     isFetching: false,
@@ -25,6 +25,8 @@ export default dataReducer = (state = initialState, action) => {
                 isFetching: false,
                 error: true
             }
+        case REHYDRATE:
+            return {...state, ...action.payload.dataReducer}
         default: 
             return state
     }

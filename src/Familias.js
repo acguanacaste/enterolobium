@@ -65,7 +65,6 @@ _showByThumbnail = (rowData) => {
 }
 
 _showByName = (rowData) => {
-    console.log(rowData.scientificName)
     return(
         <View style={styles.namesView}>
           <Text style={styles.textList}>{rowData.taxonomyName}</Text>

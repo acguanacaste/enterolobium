@@ -1,9 +1,7 @@
 import React, {Component} from 'react'
 import {Provider,connect} from 'react-redux'
 import {StackNavigator,addNavigationHelpers} from 'react-navigation'
-
 import Routes from './config/routes'
-
 import getStore from './store'
 
 const Navigation = StackNavigator(Routes,{

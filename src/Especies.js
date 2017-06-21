@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
-import {ListItem, List} from 'native-base';
+import {ListItem, List} from 'native-base'
 import{
+    AsyncStorage,
     View,
     Text,
     FlatList,
@@ -28,14 +29,15 @@ constructor(props){
     this.state = {
         toggled: false,
         isOpen: false,
-        openSearch: false
+        openSearch: false,
+        data:'',
     }
 }
 
 
 
 componentWillMount(){
-    this.props.fetchData()
+    this.props.fetchData()  
 }
 
 
@@ -73,6 +75,7 @@ _updateMenu = isOpen => {
 
 _onPressSearch = () => {
   this.setState({openSearch: !this.state.openSearch})
+  this.setState({data:this.props.data.data.responseResult})
 }
 
 
