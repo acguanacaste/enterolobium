@@ -8,7 +8,8 @@ import thunk from 'redux-thunk'
 var middlewares = compose(applyMiddleware(thunk,logger), autoRehydrate({log:true}))
 
 export default function getStore(navReducer){
-    return store = createStore(getRoootReducer(navReducer),undefined,middlewares)
-     persistStore(store, {storage: AsyncStorage},() => console.log("Hola Mundo"))
+     const store = createStore(getRoootReducer(navReducer),undefined,middlewares)
+     persistStore(store, {storage: AsyncStorage})
+     return store 
 }
 
