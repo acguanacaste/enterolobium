@@ -5,7 +5,7 @@ import getRoootReducer from './reducers'
 import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 
-var middlewares = compose(applyMiddleware(thunk,logger), autoRehydrate({log:true}))
+var middlewares = compose(applyMiddleware(thunk,logger), autoRehydrate())
 
 export default function getStore(navReducer){
      const store = createStore(getRoootReducer(navReducer),undefined,middlewares)

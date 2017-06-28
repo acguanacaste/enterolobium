@@ -26,7 +26,10 @@ export default dataReducer = (state = initialState, action) => {
                 error: true
             }
         case REHYDRATE:
-            return {...state, ...action.payload.dataReducer}
+            return {...state, 
+                data: [],
+                isFetching: true
+                }
         default: 
             return state
     }

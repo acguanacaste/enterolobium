@@ -30,16 +30,19 @@ constructor(props){
         toggled: false,
         isOpen: false,
         openSearch: false,
-        data:'',
+        data: []
     }
 }
 
 
-
-componentWillMount(){
+componentDidMount(){
     this.props.fetchData()  
 }
 
+_saveData =  () => {
+    AsyncStorage.setItem(data,this.props.data.data.responseResult)
+    this.setState({data: this.props.data.data.responseResult})
+}
 
 _showByThumbnail = rowData => {
     const{navigate} = this.props.navigation
@@ -75,7 +78,6 @@ _updateMenu = isOpen => {
 
 _onPressSearch = () => {
   this.setState({openSearch: !this.state.openSearch})
-  this.setState({data:this.props.data.data.responseResult})
 }
 
 
@@ -86,6 +88,8 @@ static navigationOptions = {
 
     render(){
         const menu = <Menu navigation={this.props.navigation}/>
+        const {responseResult} = this.props.data.data
+      
         return(
             <SideMenu
               menu={menu}
@@ -93,13 +97,15 @@ static navigationOptions = {
               onChange={(isOpen) => this._updateMenu(isOpen)}
             >
             <View container style={styles.container}>
-            
-             {this.state.toggled ? <Navbar _onPressToggle={this._onPressToggle.bind(this)} _openMenu={this._openMenu.bind(this)} _openSearch={this._onPressSearch.bind(this)} iconprincipal='bars' title='Especies' iconcenter='search'iconname='th'/> : <Navbar _onPressToggle={this._onPressToggle.bind(this)} _openMenu={this._openMenu.bind(this)} _openSearch={this._onPressSearch.bind(this)} iconprincipal='bars' title='Especies' iconcenter='search' iconname='sort-alpha-asc'/>}
+            {this.state.toggled ? <Navbar _onPressToggle={this._onPressToggle.bind(this)} _openMenu={this._openMenu.bind(this)} _openSearch={this._onPressSearch.bind(this)} iconprincipal='bars' title='Especies' iconcenter='search'iconname='th'/> : <Navbar _onPressToggle={this._onPressToggle.bind(this)} _openMenu={this._openMenu.bind(this)} _openSearch={this._onPressSearch.bind(this)} iconprincipal='bars' title='Especies' iconcenter='search' iconname='sort-alpha-asc'/>}
              {this.state.openSearch ? <Search/> :  null}
+            {!responseResult ? <Text style={styles.text}>Cargando...</Text>: null }
+                
+                
               {
                 this.state.toggled ?
                <FlatList
-               data={this.props.data.data.responseResult}
+               data={responseResult}
                renderItem={({item}) => this._showByName(item)}
                />
     
@@ -107,7 +113,7 @@ static navigationOptions = {
               
              <FlatList
                contentContainerStyle={styles.list}
-               data={this.props.data.data.responseResult}
+               data={responseResult}
                renderItem={({item}) => this._showByThumbnail(item)}
                initialNumToRender = {20}
                 />
@@ -148,6 +154,14 @@ const styles = StyleSheet.create({
     borderWidth:1,
     backgroundColor: '#504657',
     borderColor: 'gray'
+  },
+  text: {
+    color: '#181818',
+    fontWeight: 'bold',
+    fontFamily: 'Avenir',
+    textAlign: 'center',
+    fontSize: 16,
+    marginTop: 180
   },
   textbutton:{
     color: '#b3b3b3',

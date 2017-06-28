@@ -39,7 +39,7 @@ componentWillMount(){
 _showByThumbnail = (rowData) => {
      const{navigate} = this.props.navigation
     return(
-         <TouchableWithoutFeedback onPress={() =>  navigate('Details',{item:rowData})}>
+         <TouchableWithoutFeedback onPress={() =>  navigate('DetailsGenus',{item:rowData})}>
           <Image style={{width:120,height:120,margin:0.5}} source={{uri:rowData.urlPhoto,cache:'force-cache'}}/>
          </TouchableWithoutFeedback>
     )
@@ -48,7 +48,7 @@ _showByThumbnail = (rowData) => {
 _showByName = (rowData) => {
      const{navigate} = this.props.navigation
     return(
-        <TouchableWithoutFeedback onPress={() =>  navigate('Details',{item:rowData})}>
+        <TouchableWithoutFeedback onPress={() =>  navigate('DetailsGenus',{item:rowData})}>
             <View style={styles.namesView}>
               <Text style={styles.textList}>{rowData.taxonomyName}</Text>
             </View>
@@ -78,7 +78,6 @@ static navigationOptions = {
 
     render(){
         const menu = <Menu navigation={this.props.navigation}/>
-        console.log(this.props.data.data)
         return(
             <SideMenu
               menu={menu}

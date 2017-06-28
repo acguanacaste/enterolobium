@@ -33,8 +33,8 @@ componentDidMount(){
 
  requestSuperAgent() {
 const {params} = this.props.navigation.state
-const {scientificName} = params.item
-const URLF = 'http://localhost:8000/api/observaciones/especie/'+scientificName
+const {taxonomyName} = params.item
+const URLF = 'http://localhost:8000/api/Observaciones/genero/'+ taxonomyName
   Request
   .get(URLF)
   .then(res => {

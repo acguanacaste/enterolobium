@@ -30,6 +30,10 @@ export default class Menu extends Component{
  _deleteData = () => {
         this.setState=({text:''})
     }
+    
+ _filter = () => {
+        this.setState=({text:''})
+    }
 
 static navigationOptions ={
     headers: {
