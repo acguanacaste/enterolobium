@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {ListItem, List} from 'native-base';
 import{
     View,
     Text,
