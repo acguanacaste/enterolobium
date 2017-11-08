@@ -1,82 +1,41 @@
 import React, {Component} from 'react'
 import {StyleSheet,Text,ScrollView,View,Image,Dimensions,FlatList,TouchableWithoutFeedback} from 'react-native'
-import MapView from 'react-native-maps'
+import MapView,{Marker} from 'react-native-maps'
 import Navbar from'./Navbar'
-import Request  from 'superagent'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Swiper from 'react-native-swiper'
 import ImageSlider from 'react-native-image-slider'
-
+import {connect} from 'react-redux'
+import {fetchDataInfo} from './actions/getInfo'
+import {replaceRequest} from './lib'
+import Config from './config/config'
+import Especies from './Especies'
+const array = ''
 const {width,height} = Dimensions.get('window')
 
-
-
-export default class Map extends Component{
+class Details extends Component{
 
 constructor(props){
     super(props)
-    this.requestSuperAgent = this.requestSuperAgent.bind(this)
     this.state = {
-        rawData: [],
-        images: [],
-        latitude: [],
-        longitude: [],
-        region:{
-        }
-    }
-    
+        places: null,
+    }  
 }
 
 componentDidMount(){
-  this.requestSuperAgent()
+  let name = '' 
+  const {params} = this.props.navigation.state
+  let type = params.item[1]
+  const {taxonomyName} = params.item[0]
+  name = taxonomyName
+  if(taxonomyName === undefined){
+  const {scientificName} = params.item[0]
+  name = scientificName
+  }
+  const request = replaceRequest(type,name)
+  this.props.fetchDataInfo(request)
+  this.renderMapMarker()
 }
-
- requestSuperAgent() {
-const {params} = this.props.navigation.state
-const {scientificName} = params.item
-const URLF = 'http://localhost:8000/api/observaciones/especie/'+scientificName
-  Request
-  .get(URLF)
-  .then(res => {
-     const data = JSON.parse(res.text).responseResult
-     let newData = this._getUrlPhoto(data)
-     let latitude = this._getLatitude(data)
-     let longitude = this._getLongitude(data)
-    this.setState({
-      rawData: data,
-      images: newData,   /*Estos deben colocarse en el mismo orden de arriba this.state... */
-      latitude,
-      longitude
-    })
-  })
-  .catch(err => {
-    console.log(err)
-  })
-}
-
-_getUrlPhoto = (data) => {
-  return data.map(function(item) {
-    return item.urlPhoto
-  })
-}
-
-_getLatitude = (data) => {
-  return data.map(function(item) {
-    return item.decimalLatitude
-  })
-}
-
-_getLongitude = (data) => {
-  return data.map(function(item) {
-    return item.decimalLongitude
-  })
-}
-
-_goBack = () =>{
-  const{goBack} = this.props.navigation
-  goBack()
-}
-
 
 _onShare = () =>{
     Share.share({
@@ -95,8 +54,36 @@ _onShare = () =>{
 
 _renderItem = (item) => {
   return(
-    <Image style={{width:175,height:180,margin:3}} source={{uri:item}}/>
+    <Image style={{width:175,height:180,margin:3}} source={{uri:item.urlPhoto,cache:'force-cache'}}/>
+ 
   )
+}
+
+renderMapMarker(){
+    const {responseResult} = this.props.data.data
+    var arrayMarkers = []
+    responseResult.map((element, i)=>{
+               arrayMarkers.push(
+                 <Marker
+                 key={i}
+                 coordinate = {{
+                   latitude: Number (element.decimalLatitude),
+                   longitude: Number (element.decimalLongitude)
+                 }}
+             />)
+})
+this.setState(
+    {
+        places: arrayMarkers,
+    }
+)
+}
+
+goBack(){
+    const {navigate} = this.props.navigation 
+    const {params} = this.props.navigation.state
+    let type = params.item[1]
+    navigate(type)
 }
 
 static navigationOptions = {
@@ -105,10 +92,11 @@ static navigationOptions = {
 
     render(){
         const ASPECT_RATIO = width / height;
+        const {responseResult} = this.props.data.data
         return(
         <ScrollView style={styles.container}>
           <View style={styles.containerBar}>
-           <TouchableWithoutFeedback onPress={()=>this._goBack()}>
+           <TouchableWithoutFeedback onPress={() => this.goBack()}>
               <Icon name='arrow-left'
                         size={18}
                         style={styles.iconBar}/>
@@ -116,7 +104,7 @@ static navigationOptions = {
           </View>
           <FlatList
               horizontal = {true}
-              data={this.state.images}
+              data={responseResult}
               renderItem={({item}) => this._renderItem(item)}
                 />
          <MapView style={styles.map}  initialRegion={{
@@ -124,20 +112,25 @@ static navigationOptions = {
                 longitude: -85.61384,
                 latitudeDelta: 1,
                 longitudeDelta: (1 * Number(ASPECT_RATIO)),
-                }}
->
-              {
-               this.state.latitude.map((itemlat) => this.state.longitude.map((itemlon) =>
-               <MapView.Marker
-                coordinate={{latitude: Number(itemlat), longitude: Number(itemlon)}}
-               /> )
-               )
-             }
-
-            </MapView>
-            
+                }}>
+              {        
+                  this.state.places
+               }    
+          </MapView>         
         </ScrollView>
         )
+    }
+}
+
+//mapStateToProps
+const mapStateToProps = state => {
+    return { data: state.data}
+}
+
+//mapDispatchToProps
+const mapDispatchToProps = dispatch => {
+    return{
+        fetchDataInfo: (item) => dispatch(fetchDataInfo(item))
     }
 }
 
@@ -178,3 +171,5 @@ const styles =  StyleSheet.create({
    }
 
 })
+
+export default connect (mapStateToProps,mapDispatchToProps)(Details)

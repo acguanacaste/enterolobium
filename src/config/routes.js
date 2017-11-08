@@ -1,18 +1,18 @@
-import Familias from '../Familias'
 import Especies from '../Especies'
 import Details from '../Details'
-import Genero from '../Genero'
+import Generos from '../Genero'
+import Familias from '../Familias'
 import Search from '../Search'
-import DetailsGenus from '../DetailsGenus'
+import Information from '../Information'
 
 
 const Routes = {
 Especies:{screen: Especies},
-Familias:{screen: Familias},
 Details:{screen: Details},
-DetailsGenus:{screen: DetailsGenus},
-Genero:{screen: Genero},
-Search:{screen: Search}
+Familias:{screen: Familias},
+Generos:{screen: Generos},
+Search:{screen: Search},
+Información:{screen: Information}
 }
 
 export default Routes

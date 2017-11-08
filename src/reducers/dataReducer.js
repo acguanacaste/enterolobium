@@ -18,7 +18,7 @@ export default dataReducer = (state = initialState, action) => {
             return{
                 data: action.data,
                 isFetching: false
-            }
+            } 
         case FETCHING_DATA_ERROR:
             return{
                 ...state,

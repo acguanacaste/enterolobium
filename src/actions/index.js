@@ -1,6 +1,5 @@
 import {FETCHING_DATA,FETCHING_DATA_SUCCESS,FETCHING_DATA_ERROR,REHYDRATE} from '../constants'
-import getDataApi from '../api/api'
-import {getDataApi2} from '../api/api'
+import {getDataApi} from '../api/api'
 import {NetInfo} from 'react-native'
 
 export const getData = () => {
@@ -16,7 +15,6 @@ export const getDataSuccess = data => {
     }
 }
 
-
 export const getDataFailure = () => {
     return{
         type: FETCHING_DATA_ERROR
@@ -26,24 +24,13 @@ export const getDataFailure = () => {
 
 //async thunk fetchData
 
-export const fetchData = () => {
+export const fetchData = (item) => {
     return(dispatch) =>{
         dispatch(getData())
-            getDataApi()
+            getDataApi(item)
             .then(([response,json])=>{
                 dispatch(getDataSuccess(json))
             })
             .catch((err) => dispatch(getDataFailure(err)))      
-    }
-}
-
-export const fetchData2 = () => {
-    return(dispatch) =>{
-        dispatch(getData())
-        getDataApi2()
-            .then(([response,json])=>{
-                dispatch(getDataSuccess(json))
-            })
-            .catch((err) => dispatch(getDataFailure(err)))
     }
 }

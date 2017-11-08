@@ -9,7 +9,8 @@ var middlewares = compose(applyMiddleware(thunk,logger), autoRehydrate())
 
 export default function getStore(navReducer){
      const store = createStore(getRoootReducer(navReducer),undefined,middlewares)
-     persistStore(store, {storage: AsyncStorage})
      return store 
+     persistStore(store, {storage: AsyncStorage})
+    //return store 
 }
 

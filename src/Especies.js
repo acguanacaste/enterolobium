@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {ListItem, List} from 'native-base'
 import{
-    AsyncStorage,
+    ActivityIndicator,
     View,
     Text,
     FlatList,
@@ -18,6 +18,7 @@ import Navbar from './Navbar'
 import SideMenu from 'react-native-side-menu'
 import Menu from './Menu'
 import Search from './Search'
+import {replaceUrl} from './lib'
 import {connect} from 'react-redux'
 import {fetchData} from './actions'
 const {width,height} = Dimensions.get('window')
@@ -30,24 +31,38 @@ constructor(props){
         toggled: false,
         isOpen: false,
         openSearch: false,
-        data: []
+        itemSelected: 'Especies'
     }
+    this.itemSelected = this.itemSelected.bind(this)
 }
-
 
 componentDidMount(){
-    this.props.fetchData()  
+    const request =  replaceUrl(this.state.itemSelected)
+    this.props.fetchData(request)  
 }
 
-_saveData =  () => {
-    AsyncStorage.setItem(data,this.props.data.data.responseResult)
-    this.setState({data: this.props.data.data.responseResult})
+itemSelected(item){
+    this.setState(
+        {
+            itemSelected: item,
+            isOpen: false
+        }
+    )
+}
+
+renderActivityIndicator(){
+  const {activityIndicatorContainer} = styles
+  return(
+    <View style = {activityIndicatorContainer}>
+      <ActivityIndicator size='large' color= 'black'/>
+    </View>
+  )
 }
 
 _showByThumbnail = rowData => {
     const{navigate} = this.props.navigation
     return(
-         <TouchableWithoutFeedback onPress={() => navigate('Details',{item:rowData})}>
+         <TouchableWithoutFeedback onPress={() => navigate('Details',{item:[rowData,this.state.itemSelected]})}>
           <Image style={{width:120,height:120,margin:0.5}} source={{uri:rowData.urlPhoto,cache:'force-cache'}}/>
          </TouchableWithoutFeedback>
     )
@@ -56,7 +71,7 @@ _showByThumbnail = rowData => {
 _showByName = rowData => {
     const{navigate} = this.props.navigation
     return(
-        <TouchableWithoutFeedback onPress={() =>  navigate('Details',{item:rowData})}>
+        <TouchableWithoutFeedback onPress={() =>  navigate('Details',{item:[rowData,this.state.itemSelected]})}>
             <View style={styles.namesView}>
              <Text style={styles.textList}>{rowData.scientificName}</Text>
             </View>
@@ -80,16 +95,14 @@ _onPressSearch = () => {
   this.setState({openSearch: !this.state.openSearch})
 }
 
-
 static navigationOptions = {
         header: null
  }
 
 
     render(){
-        const menu = <Menu navigation={this.props.navigation}/>
-        const {responseResult} = this.props.data.data
-      
+        const menu = <Menu navigation={this.props.navigation} itemSelected= {this.itemSelected} itemSelectedValue={this.state.itemSelected}/>
+        const {responseResult} = this.props.data.data  
         return(
             <SideMenu
               menu={menu}
@@ -97,30 +110,24 @@ static navigationOptions = {
               onChange={(isOpen) => this._updateMenu(isOpen)}
             >
             <View container style={styles.container}>
-            {this.state.toggled ? <Navbar _onPressToggle={this._onPressToggle.bind(this)} _openMenu={this._openMenu.bind(this)} _openSearch={this._onPressSearch.bind(this)} iconprincipal='bars' title='Especies' iconcenter='search'iconname='th'/> : <Navbar _onPressToggle={this._onPressToggle.bind(this)} _openMenu={this._openMenu.bind(this)} _openSearch={this._onPressSearch.bind(this)} iconprincipal='bars' title='Especies' iconcenter='search' iconname='sort-alpha-asc'/>}
-             {this.state.openSearch ? <Search/> :  null}
-            {!responseResult ? <Text style={styles.text}>Cargando...</Text>: null }
-                
-                
-              {
-                this.state.toggled ?
+            {this.state.toggled ? <Navbar _onPressToggle={this._onPressToggle.bind(this)} _openMenu={this._openMenu.bind(this)} _openSearch={this._onPressSearch.bind(this)} iconprincipal='bars' title={this.state.itemSelected} iconcenter='search'iconname='th'/> : <Navbar _onPressToggle={this._onPressToggle.bind(this)} _openMenu={this._openMenu.bind(this)} _openSearch={this._onPressSearch.bind(this)} iconprincipal='bars' title={this.state.itemSelected} iconcenter='search' iconname='sort-alpha-asc'/>}      
+            {this.state.openSearch ? <Search/> :  null}    
+             {!responseResult ? this.renderActivityIndicator() : null }      
+            {this.state.toggled ?
                <FlatList
-               data={responseResult}
-               renderItem={({item}) => this._showByName(item)}
-               />
-    
-              :
-              
-             <FlatList
+                data={responseResult}
+                renderItem={({item}) => this._showByName(item)}
+               />    
+               :             
+              <FlatList
                contentContainerStyle={styles.list}
                data={responseResult}
                renderItem={({item}) => this._showByThumbnail(item)}
                initialNumToRender = {20}
                 />
-              }
+            }
               </View>
-              </SideMenu>
-        
+              </SideMenu>      
         )
     }
 }
@@ -133,11 +140,15 @@ const mapStateToProps = state => {
 //mapDispatchToProps
 const mapDispatchToProps = dispatch => {
     return{
-        fetchData: () => dispatch(fetchData())
+        fetchData: (item) => dispatch(fetchData(item))
     }
 }
 
 const styles = StyleSheet.create({
+ activityIndicatorContainer:{
+    flex: 1,
+    justifyContent: 'center',
+  },
   container:{
     flex: 1,
     backgroundColor: '#898653'
