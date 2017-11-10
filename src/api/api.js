@@ -8,8 +8,11 @@ export function getDataApi3(item){
         .then(response => Promise.all([response.text.responseResult,response.json()]))
 }
 
-export function getInfoDetail(item){
+var api = {
+   getInfoDetail(item){
     return fetch(item)
     .then(response => Promise.all([response.text.responseResult,response.json()]))
 }
+}
 
+export default api

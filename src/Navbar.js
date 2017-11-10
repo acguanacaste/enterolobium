@@ -18,7 +18,7 @@ export default class Navbar extends Component{
       <View>
        <Text style={styles.textNavbar}>{this.props.title}</Text>
       </View>
-      <View style={styles.containerSearcButton}>
+      <View style={styles.containerSearchButton}>
       <TouchableWithoutFeedback onPress={this.props._openSearch}>
        <Icon style={styles.menuIcon} name={this.props.iconcenter}size={18}/>
       </TouchableWithoutFeedback>
@@ -36,25 +36,24 @@ const styles = StyleSheet.create({
 containerMenu:{
   flexDirection: 'row',
   backgroundColor: '#68923C',
-  height: 55,
+  height: 65,
   justifyContent: 'space-between',
   paddingHorizontal: 10,
   borderBottomWidth: 2,
   borderColor: '#3A4C1A',
 },
-containerSearcButton:{
+containerSearchButton:{
   position: 'absolute',
-  right: 40
+  right: 50
 },
 menuIcon:{
-  marginTop:22,
-  margin: 5,
+  marginTop:10,
+  padding: 15,
   color: '#181818'
 },
-
 textNavbar:{
   fontSize:20,
-  marginTop: 18,
+  marginTop: 22,
   color: '#181818',
 },
 

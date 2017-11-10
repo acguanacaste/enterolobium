@@ -94,6 +94,8 @@ _onPressSearch = () => {
   this.setState({openSearch: !this.state.openSearch})
 }
 
+_keyExtractor = (item, index) => item._id
+
 static navigationOptions = {
         header: null
  }
@@ -115,12 +117,14 @@ static navigationOptions = {
             {this.state.toggled ?
                <FlatList
                 data={responseResult}
+                keyExtractor={this._keyExtractor}
                 renderItem={({item}) => this._showByName(item)}
                />    
                :             
               <FlatList
                contentContainerStyle={styles.list}
                data={responseResult}
+               keyExtractor={this._keyExtractor}
                renderItem={({item}) => this._showByThumbnail(item)}
                initialNumToRender = {20}
                 />
